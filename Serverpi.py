@@ -45,27 +45,29 @@ def instructions():
 # and keeps track of the total. When it receives ten results, it calculates and displays an average.
 ##
 def game():
-    global pifacetotaltime = 0
-    global gertpitotaltime = 0
-    global pifaceround = 0
-    global gertpiround = 0
+    global pifacetotaltime
+    global gertpitotaltime
+    global pifaceround
+    global gertpiround
     pifacetotaltime = 0
     gertpitotaltime = 0
     pifaceround = 0
     gertpiround = 0
-    
+       
     # Setting up this pi as a server using the socket library
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(("", 5050))                 #The server receives data from clients on port 5050
     s.listen(1)
-    
-    komm, addr = s.accept()            #The server waits for the client to connect                       
-    
-    
+    print "waiting for two players"
+    komm, addr = s.accept()            #The server waits for the client to connect                           
+    komm2, addr = s.accept()
+    raw_input("hit enter to start")
     komm.send("start game")                       #sends the start command to clients
+    komm2.send("start game")                       #sends the start command to clients
     while (True):
         parsestring(komm.recv(1024))        #end_time is received from the client as a string type
+	parsestring(komm2.recv(1024))
        # print "Waiting to receive response time..."
         #print "received response in " + end_time + " milliseconds"               
         #total_time = total_time + int(end_time)          #Sum the total time by changing the string end_time into an integer
@@ -89,11 +91,11 @@ def main():
 
     while (True):
         userinput=raw_input("Press Y to play, I for instructions, or Q to quit: ")
-        if (userinput=="i" or userinput=="I"):
+        if (userinput=="i"):
             instructions()
-        elif (userinput=="y" or userinput=="Y"):
+        elif (userinput=="y"):
             game()
-        elif (userinput=="q" or userinput=="Q"):
+        elif (userinput=="q"):
             break
         else:
             print "Invalid Input"
