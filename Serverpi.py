@@ -2,10 +2,28 @@
 #involves networking and other experimental goodness
 
 import socket
+import re
 
-gameon = False
 userinput = ""
+pifaceround = 0
+gertpiround = 0
+pifacetotaltime = 0
+gertpitotaltime = 0
 
+
+
+def parsestring(stringin):
+    r = re.match("^.*'(\w+)'(.*)$", stringin)          #parses incoming string from client pi
+    if r:
+        i,v = r.groups()
+        if (i=="piface"):                              #determines which pi it came from
+            pifacetotaltime=pifacetotaltime+int(v)          #
+            pifaceround=pifaceround+1
+        elif (i=="gertpi"):
+            gertpitotaltime=gertpitotaltime+int(v)
+            gertpiround=gertpiround+1
+        else:
+            print "Invalid input recieved."
 
 
 def instructions():
@@ -59,14 +77,15 @@ def main():
     print "!!!!Welcome to Group B's RaspberryPi Reaction Time Game!!!!"
     print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-    while (gameon==False):
+    while (True):
         print "Press Y to play, I for instructions, or Q to quit"
         userinput=getch()
         if (userinput=="i"):
             instructions()
-        if (userinput=="y"):
-            gameon=True
+        elif (userinput=="y"):
             game()
-        if (userinput=="q"):
+        elif (userinput=="q"):
             break
+        else:
+            print "Invalid Input"
 
