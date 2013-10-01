@@ -41,35 +41,35 @@ def instructions():
 # and keeps track of the total. When it receives ten results, it calculates and displays an average.
 ##
 def game():
-# Setting up this pi as a server using the socket library
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s.bind(("", 5050))                 #The server receives data from clients on port 5050
-s.listen(1)
-
-komm, addr = s.accept()            #The server waits for the client to connect                       
-data = raw_input("Enter Command: ")       #Once the connection is made, the server can start the game
-if data == "stop":                        #Or it can quit
-    pass
-elif data == "start game":                #if the command is to start...
-    komm.send(data)                       #sends the start command to clients
-    while (True):
-        parsestring(komm.recv(1024))        #end_time is received from the client as a string type
-       # print "Waiting to receive response time..."
-        #print "received response in " + end_time + " milliseconds"               
-        #total_time = total_time + int(end_time)          #Sum the total time by changing the string end_time into an integer
-       # round += 1                                       #increment the round
-        if (pifaceround == 10 and gertpiround == 10):                     #when round reaches 10, 10 responses have been received
-            break                           #So we stop
-        komm, addr = s.accept()                          #Wait for the client to be ready to send another value
-    piface_avg_time = pifacetotaltime/10.0              #Calculate the average time in milliseconds
-    print "Piface average reaction time is: " + str(piface_avg_time) + " milliseconds"
-    gertpi_avg_time = gertpitotaltime/10.0              #Calculate the average time in milliseconds
-    print "Gertpi average reaction time is: " + str(gertpi_avg_time) + " milliseconds"
-else:
-    print "invalid command"        #As of now only two commands are accepted: "start game" and "stop"
-print "Connection Terminated"      
-s.close()                          #End the program
+    # Setting up this pi as a server using the socket library
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind(("", 5050))                 #The server receives data from clients on port 5050
+    s.listen(1)
+    
+    komm, addr = s.accept()            #The server waits for the client to connect                       
+    data = raw_input("Enter Command: ")       #Once the connection is made, the server can start the game
+    if data == "stop":                        #Or it can quit
+        pass
+    elif data == "start game":                #if the command is to start...
+        komm.send(data)                       #sends the start command to clients
+        while (True):
+            parsestring(komm.recv(1024))        #end_time is received from the client as a string type
+           # print "Waiting to receive response time..."
+            #print "received response in " + end_time + " milliseconds"               
+            #total_time = total_time + int(end_time)          #Sum the total time by changing the string end_time into an integer
+           # round += 1                                       #increment the round
+            if (pifaceround == 10 and gertpiround == 10):                     #when round reaches 10, 10 responses have been received
+                break                           #So we stop
+            komm, addr = s.accept()                          #Wait for the client to be ready to send another value
+        piface_avg_time = pifacetotaltime/10.0              #Calculate the average time in milliseconds
+        print "Piface average reaction time is: " + str(piface_avg_time) + " milliseconds"
+        gertpi_avg_time = gertpitotaltime/10.0              #Calculate the average time in milliseconds
+        print "Gertpi average reaction time is: " + str(gertpi_avg_time) + " milliseconds"
+    else:
+        print "invalid command"        #As of now only two commands are accepted: "start game" and "stop"
+    print "Connection Terminated"      
+    s.close()                          #End the program
 
 def main():
 
