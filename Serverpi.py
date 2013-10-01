@@ -47,8 +47,12 @@ def instructions():
 def game():
     global pifacetotaltime = 0
     global gertpitotaltime = 0
-    global pifacerount = 0
+    global pifaceround = 0
     global gertpiround = 0
+    pifacetotaltime = 0
+    gertpitotaltime = 0
+    pifaceround = 0
+    gertpiround = 0
     
     # Setting up this pi as a server using the socket library
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -85,12 +89,13 @@ def main():
 
     while (True):
         userinput=raw_input("Press Y to play, I for instructions, or Q to quit: ")
-        if (userinput=="i" or "I"):
+        if (userinput=="i" or userinput=="I"):
             instructions()
-        elif (userinput=="y"):
+        elif (userinput=="y" or userinput=="Y"):
             game()
-        elif (userinput=="q"):
+        elif (userinput=="q" or userinput=="Q"):
             break
         else:
             print "Invalid Input"
 
+main()
