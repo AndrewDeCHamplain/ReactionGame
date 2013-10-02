@@ -1,18 +1,13 @@
-This is a project for SYSC3010 group b
+1 - Run serverpi.py on server pi machine.
 
-It uses 3 networked raspberry pi's
+2 - Input y on serverpi machine
 
-one acts as a server and provides a gui, as well as tells the other PI's what to do
+3 - Run pifaceclient.py on piface machine
 
-The other two pi's are effectively terminals that recieve data from the serverpi which tells them what LED to turn on
+4 - Run gertpiclient.py on gertpi machine
 
-they count how long it takes the user to press the button that corresponds to the lit LED
-they send that data back to the server pi
+5 - press enter on serverpi machine to start game
 
-this process repeats till the game is over (user decision or 10 rounds)
+6 - play game on client machines
 
-the server then averages the 2 pi's overall reaction times
-
-the winning pi's lights will all light up
-
-end
+7 - repeat steps 2 - 6 as desired.
