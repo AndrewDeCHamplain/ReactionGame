@@ -1,0 +1,1 @@
+This game uses 3 raspberry pi boards to test the reaction time of 2 people. One pi acts as the server, connecting the other 2 boards and displaying the interface for the game. The server implements sockets to create a tcp connection. This connection requires that the client's programs have the server pi's ip.
