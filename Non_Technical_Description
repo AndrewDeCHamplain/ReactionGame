@@ -1,0 +1,11 @@
+The game we have made to test the network and peripheral capabilities of the Raspberry Pi involves the use of three
+Raspberry Pi Systems; one connected to a GertBoard, one connected to a PiFace and the other on its own. The pi without any
+peripheral attachments is used as a server that can communicate with the other pi systems. It is in charge of starting the
+game and computing the results. The two Pi systems with peripheral attachments (We will call them clients) are programmed 
+to start the game when they receive a message from the server, which is only sent when both clients connect to the server.
+
+The game, which is run entirely by the clients, is very simple. There are LED lights on each board that correspond to a
+button. In one round of the game, there is a countdown, then a random LED will turn on. The player must push this button
+as fast as possible (They are being timed). The time taken to push the button is sent to the server. When both clients
+have finished 10 rounds, the game will end and the server will display the average reaction times of the two competitors.
+The players can either rematch or quit from there.
