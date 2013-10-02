@@ -1,3 +1,11 @@
 This game uses 3 raspberry pi boards to test the reaction time of 2 people. One pi acts as the server, connecting the 
 other 2 boards and displaying the interface for the game. The server implements sockets to create a tcp connection. This 
 connection requires that the client's programs have the server pi's ip.
+
+
+The Gertboard used GPIO 23-25 as buttons by setting their mode to output and placing jumpers from GP25 -> J3 B1, 
+GP24 -> J3 B2, GP23 -> J3 B3. The buttons also required headers connecting U3 B1 - B3 to out. For the LED's that 
+displayed the random LED, their GPIO mode was set to output for GP6-GP9. Jumpers were used to connect GP10 -> J3 B9,
+GP9 -> J3 B10, GP8 -> J3 B11, and GP7 -> J3 B12 and the headers connect to U5 B9-B12 out. The header on U5 B9 is not 
+used for the game but in just there to turn off LED D9 so it is not confused with when LED D10 is lit up. 
+
