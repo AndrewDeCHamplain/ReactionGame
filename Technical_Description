@@ -9,3 +9,4 @@ displayed the random LED, their GPIO mode was set to output for GP6-GP9. Jumpers
 GP9 -> J3 B10, GP8 -> J3 B11, and GP7 -> J3 B12 and the headers connect to U5 B9-B12 out. The header on U5 B9 is not 
 used for the game but in just there to turn off LED D9 so it is not confused with when LED D10 is lit up. 
 
+The Piface is simple, just connect and get ready to play.
