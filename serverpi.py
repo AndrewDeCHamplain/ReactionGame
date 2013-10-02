@@ -1,9 +1,12 @@
-#Group B making a simple server application
-#involves networking and other experimental goodness
+#Group B making a server application to run a simple reaction time based game
+#involves sending and receiving data to and from two independent clients running separate code
 
 import socket
 import re
 
+####
+#Declaring global variables for round and total time
+####
 pifaceround = 0
 gertpiround = 0
 pifacetotaltime = 0
@@ -20,16 +23,16 @@ def parsestring(stringin):
     r = re.match("^.*'(\w+)'(.*)$", stringin)          #parses incoming string from client pi
     if r:
         i,v = r.groups()
-        if (i=="piface"):                              #determines which pi it came from
-            pifacetotaltime=pifacetotaltime+int(v)          
-            pifaceround=pifaceround+1
-        elif (i=="gertpi"):
+        if (i=="piface"):                              #if the data has been received from the piface...
+            pifacetotaltime=pifacetotaltime+int(v)     #convert the string to an integer and add it to the total time
+            pifaceround=pifaceround+1		       #increment the round for Piface
+        elif (i=="gertpi"):			       #The process is the exact same for the gertboard
             gertpitotaltime=gertpitotaltime+int(v)
             gertpiround=gertpiround+1
         else:
-            print "Invalid input recieved."
+            print "Invalid input recieved."	       #If this happens, the server has received a garbage value for some reason
 
-
+#Print out some instructions for startup
 def instructions():
     print "\n\nThere are two raspberrypi's with peripheral boards attached. These function as controllers"
     print "This serverpi will send commands to them telling them which LEDs to light"        
