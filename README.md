@@ -26,3 +26,6 @@ To Run:
 6 - Game will start in 3 seconds, play game on client machines.
 
 7 - Repeat steps 2 - 6 as desired.
+
+
+Made by: Andrew DeChamplain, Andrew Fleck, Chris Sparrow, and Jeff Chapman
