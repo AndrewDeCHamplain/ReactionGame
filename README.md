@@ -9,7 +9,8 @@ Requirements:
 - Atleast 1 GertBoard
 - Atleast 1 PiFace
 - Router 
-
+- Atleast 6 headers (for GertBoard)
+- Atleast 7 jumpers (for GertBoard)
 
 To Run:
 
