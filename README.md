@@ -4,6 +4,7 @@ ReactionGame
 A 2 player reaction game to test who can press the correct button based on a random LED the quickest. 
 
 To Run:
+
 1 - Run serverpi.py on server pi machine.
 
 2 - When prompted, input y on serverpi machine.
