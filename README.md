@@ -6,11 +6,8 @@ A 2 player reaction game to test who can press the correct button based on a ran
 Requirements: 
 
 - Atleast 3 Raspberry Pis
-- 
 - Atleast 1 GertBoard
-- 
 - Atleast 1 PiFace
-- 
 - Router 
 
 
